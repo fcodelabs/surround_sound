@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:surround_sound/surround_sound.dart';
 
 void main() => runApp(MyApp());
 
@@ -18,8 +19,38 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final _controller = SoundController();
+  double val=0;
+
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Surround Sound Example"),
+      ),
+      body: Column(
+        children: <Widget>[
+          SoundWidget(soundController: _controller),
+          SizedBox(height: 32),
+          FlatButton(
+            child: Text("Play"),
+            onPressed: () {
+              _controller.play();
+            },
+          ),
+          Slider(
+            value: val,
+            min: -1,
+            max: 1,
+            onChanged: (val) {
+              setState(() {
+                this.val = val;
+              });
+              _controller.setPosition(val, 0, 0);
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
