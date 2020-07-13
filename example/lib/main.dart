@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:surround_sound/surround_sound.dart';
 
@@ -20,7 +21,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = SoundController();
-  double val=0;
+  double val = 256;
 
   @override
   Widget build(BuildContext context) {
@@ -32,21 +33,37 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           SoundWidget(soundController: _controller),
           SizedBox(height: 32),
-          FlatButton(
-            child: Text("Play"),
-            onPressed: () {
-              _controller.play();
-            },
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              FlatButton(
+                child: Text("Play"),
+                onPressed: () async {
+                  await _controller.play();
+                  final val = await _controller.isPlaying();
+                  print('isPlaying: $val');
+                },
+              ),
+              SizedBox(width: 24),
+              FlatButton(
+                child: Text("Stop"),
+                onPressed: () async {
+                  await _controller.stop();
+                  final val = await _controller.isPlaying();
+                  print('isPlaying: $val');
+                },
+              ),
+            ],
           ),
           Slider(
             value: val,
-            min: -1,
-            max: 1,
+            min: 256,
+            max: 1500,
             onChanged: (val) {
+              _controller.setFrequency(val);
               setState(() {
                 this.val = val;
               });
-              _controller.setPosition(val, 0, 0);
             },
           ),
         ],

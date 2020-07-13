@@ -26,8 +26,8 @@ class _SoundWidgetState extends State<SoundWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 10,
-      width: double.infinity,
+      height: 1,
+      width: 1,
       child: WebView(
         gestureNavigationEnabled: true,
         javascriptMode: JavascriptMode.unrestricted,
