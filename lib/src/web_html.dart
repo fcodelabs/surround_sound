@@ -77,7 +77,7 @@ const html = '''
         _setPanner();
 
         oscillator = audioCtx.createOscillator();
-        oscillator.type = 'sine';
+        oscillator.type = 'square';
         oscillator.frequency.value = freq;
         oscillator.start();
 

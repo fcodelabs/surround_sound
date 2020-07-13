@@ -21,7 +21,6 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   final _controller = SoundController();
-  double val = 256;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +28,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Surround Sound Example"),
       ),
-      body: Column(
+      body: ListView(
         children: <Widget>[
           SoundWidget(soundController: _controller),
           SizedBox(height: 32),
@@ -55,15 +54,68 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           ),
-          Slider(
-            value: val,
-            min: 256,
-            max: 1500,
-            onChanged: (val) {
-              _controller.setFrequency(val);
-              setState(() {
-                this.val = val;
-              });
+          SizedBox(height: 32),
+          ValueListenableBuilder<AudioParam>(
+            valueListenable: _controller,
+            builder: (context, value, _) {
+              return Column(
+                children: <Widget>[
+                  Text("Volume"),
+                  Slider(
+                    value: value.volume,
+                    min: 0,
+                    max: 1,
+                    onChanged: (val) {
+                      _controller.setVolume(val);
+                    },
+                  ),
+                  Text("Frequency"),
+                  Slider(
+                    value: value.freq,
+                    min: 128,
+                    max: 1500,
+                    onChanged: (val) {
+                      _controller.setFrequency(val);
+                    },
+                  ),
+                  SizedBox(height: 32),
+                  Text(
+                    "Position",
+                    style: TextStyle(
+                      fontWeight: FontWeight.w600,
+                      fontSize: 18,
+                    ),
+                  ),
+                  SizedBox(height: 12),
+                  Text("x-axis"),
+                  Slider(
+                    value: value.x,
+                    min: -1,
+                    max: 1,
+                    onChanged: (val) {
+                      _controller.setPosition(val, value.y, value.z);
+                    },
+                  ),
+                  Text("y-axis"),
+                  Slider(
+                    value: value.y,
+                    min: -1,
+                    max: 1,
+                    onChanged: (val) {
+                      _controller.setPosition(value.x, val, value.z);
+                    },
+                  ),
+                  Text("z-axis"),
+                  Slider(
+                    value: value.z,
+                    min: -1,
+                    max: 1,
+                    onChanged: (val) {
+                      _controller.setPosition(value.x, value.y, val);
+                    },
+                  ),
+                ],
+              );
             },
           ),
         ],

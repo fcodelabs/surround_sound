@@ -16,6 +16,22 @@ class AudioParam {
     this.volume = 0.5,
   });
 
+  AudioParam copyWith({
+    double x,
+    double y,
+    double z,
+    double freq,
+    double volume,
+  }) {
+    return AudioParam(
+      x: x ?? this.x,
+      y: y ?? this.y,
+      z: z ?? this.z,
+      freq: freq ?? this.freq,
+      volume: volume ?? this.volume,
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
