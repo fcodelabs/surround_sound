@@ -1,8 +1,9 @@
 name: surround_sound
-description: A package to create surround sound effects
-version: 0.0.1
-author:
-homepage:
+description: A package to create surround sound effects with a frequency generator using Web Audio API
+version: 0.1.0
+repository: https://github.com/fcodelabs/surround_sound
+issue_tracker: https://github.com/fcodelabs/surround_sound/issues
+homepage: https://www.fcodelabs.com
 
 environment:
   sdk: ">=2.7.0 <3.0.0"

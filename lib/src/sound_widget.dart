@@ -11,8 +11,7 @@ class SoundWidget extends StatefulWidget {
   SoundWidget({
     Key key,
     @required this.soundController,
-  })
-      : assert(soundController != null),
+  })  : assert(soundController != null),
         super(key: key);
 
   @override
@@ -20,8 +19,8 @@ class SoundWidget extends StatefulWidget {
 }
 
 class _SoundWidgetState extends State<SoundWidget> {
-  final htmlText = 'data:text/html;base64,${base64Encode(
-      const Utf8Encoder().convert(html))}';
+  final htmlText =
+      'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(html))}';
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +32,8 @@ class _SoundWidgetState extends State<SoundWidget> {
         javascriptMode: JavascriptMode.unrestricted,
         initialUrl: htmlText,
         onWebViewCreated: (controller) {
-          print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${controller
-              .runtimeType}");
+          print(
+              ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${controller.runtimeType}");
           widget.soundController.webController.complete(controller);
         },
       ),
