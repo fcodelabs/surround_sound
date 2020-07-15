@@ -7,7 +7,7 @@ import 'audio_param.dart';
 
 class SoundController extends ValueNotifier<AudioParam> {
   WebViewController _controller;
-  Completer<WebViewController> _webController;
+  Completer<WebViewController> _webController = Completer<WebViewController>();
 
   SoundController() : super(AudioParam());
 
@@ -18,15 +18,16 @@ class SoundController extends ValueNotifier<AudioParam> {
     super.value = param;
   }
 
-  Completer<WebViewController> get webController {
-    if (_webController == null) {
+  void complete(WebViewController controller) {
+    if (_webController?.isCompleted ?? true) {
       _webController = Completer<WebViewController>();
+      _controller = null;
     }
-    return _webController;
+    _webController.complete(controller);
   }
 
   Future init() async {
-    _controller = await webController.future;
+    _controller = await _webController.future;
     await _controller.evaluateJavascript('init_sound()');
   }
 

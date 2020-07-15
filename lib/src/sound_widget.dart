@@ -32,9 +32,7 @@ class _SoundWidgetState extends State<SoundWidget> {
         javascriptMode: JavascriptMode.unrestricted,
         initialUrl: htmlText,
         onWebViewCreated: (controller) {
-          print(
-              ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> ${controller.runtimeType}");
-          widget.soundController.webController.complete(controller);
+          widget.soundController.complete(controller);
         },
       ),
     );
