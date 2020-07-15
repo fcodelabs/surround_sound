@@ -6,8 +6,8 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'audio_param.dart';
 
 class SoundController extends ValueNotifier<AudioParam> {
-  final webController = Completer<WebViewController>();
   WebViewController _controller;
+  Completer<WebViewController> _webController;
 
   SoundController() : super(AudioParam());
 
@@ -16,6 +16,13 @@ class SoundController extends ValueNotifier<AudioParam> {
     setFrequency(param.freq);
     setVolume(param.volume);
     super.value = param;
+  }
+
+  Completer<WebViewController> get webController {
+    if (_webController == null) {
+      _webController = Completer<WebViewController>();
+    }
+    return _webController;
   }
 
   Future init() async {
