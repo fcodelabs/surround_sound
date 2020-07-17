@@ -7,10 +7,12 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class SoundWidget extends StatefulWidget {
   final SoundController soundController;
+  final String backgroundColor;
 
-  SoundWidget({
+  const SoundWidget({
     Key key,
     @required this.soundController,
+    this.backgroundColor = "#FFFFFF",
   })  : assert(soundController != null),
         super(key: key);
 
@@ -19,8 +21,27 @@ class SoundWidget extends StatefulWidget {
 }
 
 class _SoundWidgetState extends State<SoundWidget> {
-  final htmlText =
-      'data:text/html;base64,${base64Encode(const Utf8Encoder().convert(html))}';
+  String htmlText;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
+  void _init() {
+    htmlText = 'data:text/html;base64,${base64Encode(
+      const Utf8Encoder().convert(html(widget.backgroundColor)),
+    )}';
+  }
+
+  @override
+  void didUpdateWidget(SoundWidget oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.backgroundColor != oldWidget.backgroundColor) {
+      _init();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

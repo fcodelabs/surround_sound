@@ -30,7 +30,10 @@ class _HomePageState extends State<HomePage> {
       ),
       body: ListView(
         children: <Widget>[
-          SoundWidget(soundController: _controller),
+          SoundWidget(
+            soundController: _controller,
+            backgroundColor: '#FF0000',
+          ),
           SizedBox(height: 32),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

@@ -1,11 +1,12 @@
-const html = '''
+String html(String background) {
+  return '''
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Audio API</title>
 </head>
-<body>
+<body style="background-color:$background;">
 <script>
     console.clear();
     const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -135,3 +136,4 @@ const html = '''
 </body>
 </html>
 ''';
+}
