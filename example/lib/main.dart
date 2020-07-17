@@ -32,7 +32,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           SoundWidget(
             soundController: _controller,
-            backgroundColor: '#FF0000',
+            backgroundColor: Colors.green,
           ),
           SizedBox(height: 32),
           Row(

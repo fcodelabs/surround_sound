@@ -7,12 +7,12 @@ import 'package:webview_flutter/webview_flutter.dart';
 
 class SoundWidget extends StatefulWidget {
   final SoundController soundController;
-  final String backgroundColor;
+  final Color backgroundColor;
 
   const SoundWidget({
     Key key,
     @required this.soundController,
-    this.backgroundColor = "#FFFFFF",
+    this.backgroundColor = Colors.white,
   })  : assert(soundController != null),
         super(key: key);
 
@@ -30,8 +30,9 @@ class _SoundWidgetState extends State<SoundWidget> {
   }
 
   void _init() {
+    final color = widget.backgroundColor.value.toRadixString(16).substring(2);
     htmlText = 'data:text/html;base64,${base64Encode(
-      const Utf8Encoder().convert(html(widget.backgroundColor)),
+      const Utf8Encoder().convert(html('#$color')),
     )}';
   }
 
