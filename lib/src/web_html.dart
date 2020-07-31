@@ -9,7 +9,6 @@ String html(String background) {
 <body style="background-color:$background;">
 <script>
     console.clear();
-    const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx;
     let panner;
     let listener;
@@ -34,6 +33,7 @@ String html(String background) {
     }
 
     async function _things() {
+        let AudioContext = window.AudioContext || window.webkitAudioContext;
         audioCtx = new AudioContext();
 
         panner = audioCtx.createPanner();

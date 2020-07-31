@@ -50,7 +50,8 @@ class SoundController extends ValueNotifier<AudioParam> {
   Future<bool> isPlaying() async {
     await _check();
     final started = await _controller.evaluateJavascript('started');
-    return started?.toLowerCase()?.trim() == 'true';
+    final isStarted = started?.toLowerCase()?.trim();
+    return isStarted == 'true' || isStarted == '1';
   }
 
   Future setPosition(double x, double y, double z) async {
