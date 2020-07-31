@@ -1,3 +1,8 @@
+## [0.1.3] - July 31, 2020
+
+* Bug fixes in html
+* IOS bug fixes in Plist file (For Flutter WebView)
+
 ## [0.1.2] - July 17, 2020
 
 * Now background colors can be set to the widget
