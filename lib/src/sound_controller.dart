@@ -61,9 +61,9 @@ class SoundController extends ValueNotifier<AudioParam> {
     z = z.clamp(-1, 1);
     super.value = super.value.copyWith(x: x, y: y, z: z);
     await _controller.evaluateJavascript('set_panner('
-        '${x * 4 + 30}, '
-        '${y * 4 + 30}, '
-        '${z * 4 + 300}'
+        '${x * 5.5 + 30}, '
+        '${y * 5.5 + 30}, '
+        '${z * 5.5 + 300}'
         ');');
   }
 
