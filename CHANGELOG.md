@@ -1,3 +1,7 @@
+## [0.1.4] - August 31, 2020
+
+* Sensitivity of x, y and z axis was increased
+
 ## [0.1.3] - July 31, 2020
 
 * Bug fixes in html
