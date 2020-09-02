@@ -1,3 +1,8 @@
+## [0.1.5] - September 02, 2020
+
+* Minor bug fix in controller
+* Add documentation to AudioParam
+
 ## [0.1.4] - August 31, 2020
 
 * Sensitivity of x, y and z axis was increased
