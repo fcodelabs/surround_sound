@@ -56,9 +56,9 @@ class SoundController extends ValueNotifier<AudioParam> {
 
   Future setPosition(double x, double y, double z) async {
     await _check();
-    x = x.clamp(-1, 1);
-    y = y.clamp(-1, 1);
-    z = z.clamp(-1, 1);
+    x = x.clamp(-1.0, 1.0);
+    y = y.clamp(-1.0, 1.0);
+    z = z.clamp(-1.0, 1.0);
     super.value = super.value.copyWith(x: x, y: y, z: z);
     await _controller.evaluateJavascript('set_panner('
         '${x * 5.5 + 30}, '
@@ -69,14 +69,14 @@ class SoundController extends ValueNotifier<AudioParam> {
 
   Future setFrequency(double freq) async {
     await _check();
-    freq = freq.clamp(20, 20000);
+    freq = freq.clamp(20.0, 20000.0);
     super.value = super.value.copyWith(freq: freq);
     await _controller.evaluateJavascript('set_freq($freq);');
   }
 
   Future setVolume(double vol) async {
     await _check();
-    vol = vol.clamp(0, 1);
+    vol = vol.clamp(0.0, 1.0);
     super.value = super.value.copyWith(volume: vol);
     await _controller.evaluateJavascript('set_volume($vol);');
   }
