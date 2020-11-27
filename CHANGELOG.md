@@ -1,3 +1,7 @@
+## [0.1.6] - November 27, 2020
+
+* Webview version update
+
 ## [0.1.5] - September 02, 2020
 
 * Minor bug fix in controller
