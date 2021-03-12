@@ -35,11 +35,11 @@ class AudioParam {
 
   /// Create a copy of the [AudioParam] with the given non-null values.
   AudioParam copyWith({
-    double x,
-    double y,
-    double z,
-    double freq,
-    double volume,
+    double? x,
+    double? y,
+    double? z,
+    double? freq,
+    double? volume,
   }) {
     return AudioParam(
       x: x ?? this.x,

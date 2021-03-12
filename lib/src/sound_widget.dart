@@ -10,18 +10,17 @@ class SoundWidget extends StatefulWidget {
   final Color backgroundColor;
 
   const SoundWidget({
-    Key key,
-    @required this.soundController,
+    Key? key,
+    required this.soundController,
     this.backgroundColor = Colors.white,
-  })  : assert(soundController != null),
-        super(key: key);
+  }) : super(key: key);
 
   @override
   _SoundWidgetState createState() => _SoundWidgetState();
 }
 
 class _SoundWidgetState extends State<SoundWidget> {
-  String htmlText;
+  late String htmlText;
 
   @override
   void initState() {

@@ -38,7 +38,7 @@ class _HomePageState extends State<HomePage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              FlatButton(
+              MaterialButton(
                 child: Text("Play"),
                 onPressed: () async {
                   await _controller.play();
@@ -47,7 +47,7 @@ class _HomePageState extends State<HomePage> {
                 },
               ),
               SizedBox(width: 24),
-              FlatButton(
+              MaterialButton(
                 child: Text("Stop"),
                 onPressed: () async {
                   await _controller.stop();

@@ -6,7 +6,7 @@ import 'package:webview_flutter/webview_flutter.dart';
 import 'audio_param.dart';
 
 class SoundController extends ValueNotifier<AudioParam> {
-  WebViewController _controller;
+  WebViewController? _controller;
   Completer<WebViewController> _webController = Completer<WebViewController>();
 
   SoundController() : super(AudioParam());
@@ -19,7 +19,7 @@ class SoundController extends ValueNotifier<AudioParam> {
   }
 
   void complete(WebViewController controller) {
-    if (_webController?.isCompleted ?? true) {
+    if (_webController.isCompleted) {
       _webController = Completer<WebViewController>();
       _controller = null;
     }
@@ -28,7 +28,7 @@ class SoundController extends ValueNotifier<AudioParam> {
 
   Future init() async {
     _controller = await _webController.future;
-    await _controller.evaluateJavascript('init_sound()');
+    await _controller!.evaluateJavascript('init_sound()');
   }
 
   Future _check() async {
@@ -39,18 +39,18 @@ class SoundController extends ValueNotifier<AudioParam> {
 
   Future play() async {
     await _check();
-    await _controller.evaluateJavascript('play()');
+    await _controller?.evaluateJavascript('play()');
   }
 
   Future stop() async {
     await _check();
-    await _controller.evaluateJavascript('stop()');
+    await _controller?.evaluateJavascript('stop()');
   }
 
   Future<bool> isPlaying() async {
     await _check();
-    final started = await _controller.evaluateJavascript('started');
-    final isStarted = started?.toLowerCase()?.trim();
+    final started = await _controller?.evaluateJavascript('started');
+    final isStarted = started?.toLowerCase().trim();
     return isStarted == 'true' || isStarted == '1';
   }
 
@@ -60,7 +60,7 @@ class SoundController extends ValueNotifier<AudioParam> {
     y = y.clamp(-1.0, 1.0);
     z = z.clamp(-1.0, 1.0);
     super.value = super.value.copyWith(x: x, y: y, z: z);
-    await _controller.evaluateJavascript('set_panner('
+    await _controller?.evaluateJavascript('set_panner('
         '${x * 5.5 + 30}, '
         '${y * 5.5 + 30}, '
         '${z * 5.5 + 300}'
@@ -71,13 +71,13 @@ class SoundController extends ValueNotifier<AudioParam> {
     await _check();
     freq = freq.clamp(20.0, 20000.0);
     super.value = super.value.copyWith(freq: freq);
-    await _controller.evaluateJavascript('set_freq($freq);');
+    await _controller?.evaluateJavascript('set_freq($freq);');
   }
 
   Future setVolume(double vol) async {
     await _check();
     vol = vol.clamp(0.0, 1.0);
     super.value = super.value.copyWith(volume: vol);
-    await _controller.evaluateJavascript('set_volume($vol);');
+    await _controller?.evaluateJavascript('set_volume($vol);');
   }
 }
