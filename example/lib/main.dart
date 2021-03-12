@@ -93,8 +93,8 @@ class _HomePageState extends State<HomePage> {
                   Text("x-axis"),
                   Slider(
                     value: value.x,
-                    min: -1,
-                    max: 1,
+                    min: -0.2,
+                    max: 0.2,
                     onChanged: (val) {
                       _controller.setPosition(val, value.y, value.z);
                     },
@@ -102,8 +102,8 @@ class _HomePageState extends State<HomePage> {
                   Text("y-axis"),
                   Slider(
                     value: value.y,
-                    min: -1,
-                    max: 1,
+                    min: -0.2,
+                    max: 0.2,
                     onChanged: (val) {
                       _controller.setPosition(value.x, val, value.z);
                     },
@@ -111,8 +111,8 @@ class _HomePageState extends State<HomePage> {
                   Text("z-axis"),
                   Slider(
                     value: value.z,
-                    min: -1,
-                    max: 1,
+                    min: -0.2,
+                    max: 0.2,
                     onChanged: (val) {
                       _controller.setPosition(value.x, value.y, val);
                     },
