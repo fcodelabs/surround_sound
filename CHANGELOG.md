@@ -1,3 +1,9 @@
+## [0.1.7] - March 12, 2021
+
+* Upgrade flutter version
+* Remove unwanted dependencies
+* Upgrade packages
+
 ## [0.1.6] - November 27, 2020
 
 * Webview version update

@@ -1,4 +1,4 @@
-import 'package:meta/meta.dart';
+import 'package:flutter/widgets.dart';
 import 'package:surround_sound/src/sound_controller.dart';
 
 /// {@template audio_param}
