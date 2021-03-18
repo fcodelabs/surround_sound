@@ -20,7 +20,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final _controller = SoundController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,96 +30,9 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           SoundWidget(
-            soundController: _controller,
-            backgroundColor: Colors.green,
+            onSoundWidgetCreated: (controller) {},
           ),
           SizedBox(height: 32),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              MaterialButton(
-                child: Text("Play"),
-                onPressed: () async {
-                  await _controller.play();
-                  final val = await _controller.isPlaying();
-                  print('isPlaying: $val');
-                },
-              ),
-              SizedBox(width: 24),
-              MaterialButton(
-                child: Text("Stop"),
-                onPressed: () async {
-                  await _controller.stop();
-                  final val = await _controller.isPlaying();
-                  print('isPlaying: $val');
-                },
-              ),
-            ],
-          ),
-          SizedBox(height: 32),
-          ValueListenableBuilder<AudioParam>(
-            valueListenable: _controller,
-            builder: (context, value, _) {
-              return Column(
-                children: <Widget>[
-                  Text("Volume"),
-                  Slider(
-                    value: value.volume,
-                    min: 0,
-                    max: 1,
-                    onChanged: (val) {
-                      _controller.setVolume(val);
-                    },
-                  ),
-                  Text("Frequency"),
-                  Slider(
-                    value: value.freq,
-                    min: 128,
-                    max: 1500,
-                    onChanged: (val) {
-                      _controller.setFrequency(val);
-                    },
-                  ),
-                  SizedBox(height: 32),
-                  Text(
-                    "Position",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w600,
-                      fontSize: 18,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                  Text("x-axis"),
-                  Slider(
-                    value: value.x,
-                    min: -0.2,
-                    max: 0.2,
-                    onChanged: (val) {
-                      _controller.setPosition(val, value.y, value.z);
-                    },
-                  ),
-                  Text("y-axis"),
-                  Slider(
-                    value: value.y,
-                    min: -0.2,
-                    max: 0.2,
-                    onChanged: (val) {
-                      _controller.setPosition(value.x, val, value.z);
-                    },
-                  ),
-                  Text("z-axis"),
-                  Slider(
-                    value: value.z,
-                    min: -0.2,
-                    max: 0.2,
-                    onChanged: (val) {
-                      _controller.setPosition(value.x, value.y, val);
-                    },
-                  ),
-                ],
-              );
-            },
-          ),
         ],
       ),
     );
