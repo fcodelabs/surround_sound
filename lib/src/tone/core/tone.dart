@@ -4,7 +4,7 @@ import 'package:surround_sound/src/sound_controller.dart';
 ///same context and contains a singleton Transport and Destination node.
 abstract class Tone {
   final SoundController controller;
-  final String name;
+  final String vName;
 
-  Tone({required this.controller, required this.name});
+  Tone({required this.controller, required this.vName});
 }

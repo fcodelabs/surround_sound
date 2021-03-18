@@ -1,10 +1,8 @@
 import 'dart:math';
 
-import 'package:surround_sound/src/tone/core/tone.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 import './sound_controller.dart';
-import 'tone/core/context/tone_with_context.dart';
 
 class SoundControllerImpl implements SoundController {
   final WebViewController _controller;
@@ -17,28 +15,15 @@ class SoundControllerImpl implements SoundController {
     return _controller.evaluateJavascript(data);
   }
 
-  Future<String> _initialize(String type) async {
-    final name = type.toLowerCase();
+  @override
+  Future<String> findName(String prefix) async {
     String vName;
     String result;
     do {
       final n = (_rand.nextDouble() * 1e10).toInt();
-      vName = '$name$n';
+      vName = '$prefix$n';
       result = await record(vName);
     } while (result != 'null');
-    await record('const $vName = new Tone.$type();');
     return vName;
-  }
-
-  @override
-  Future<T> register<T extends Tone>() async {
-    final name = await _initialize(T.toString());
-    switch (T) {
-      case ToneWithContext:
-        return ToneWithContext(controller: this, name: name) as T;
-
-      default:
-        throw "Generics doesn't match any of the Tone Types ($T)";
-    }
   }
 }
