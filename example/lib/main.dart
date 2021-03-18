@@ -30,7 +30,9 @@ class _HomePageState extends State<HomePage> {
       body: ListView(
         children: <Widget>[
           SoundWidget(
-            onSoundWidgetCreated: (controller) {},
+            onSoundWidgetCreated: (controller) async {
+              print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Done");
+            },
           ),
           SizedBox(height: 32),
         ],

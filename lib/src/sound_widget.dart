@@ -22,10 +22,9 @@ class SoundWidget extends StatelessWidget {
       const Utf8Encoder().convert(html),
     )}';
 
-    final soundController = SoundControllerImpl();
 
     return Visibility(
-      visible: false,
+      visible: true,
       maintainState: true,
       child: SizedBox(
         height: 1,
@@ -33,16 +32,9 @@ class SoundWidget extends StatelessWidget {
         child: WebView(
           gestureNavigationEnabled: true,
           javascriptMode: JavascriptMode.unrestricted,
-          javascriptChannels: <JavascriptChannel>{
-            JavascriptChannel(name: 'm_channel', onMessageReceived: (msg) {
-              if (msg.message == 'done') {
-                soundController.mChannel = true;
-              }
-            }),
-          },
           initialUrl: htmlText,
           onWebViewCreated: (controller) {
-            soundController.controller = controller;
+            final soundController = SoundControllerImpl(controller);
             onSoundWidgetCreated(soundController);
           },
         ),
