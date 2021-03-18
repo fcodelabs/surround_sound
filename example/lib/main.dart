@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
           SoundWidget(
             onSoundWidgetCreated: (controller) async {
+              await controller.register<ToneWithContext>();
               print(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> Done");
             },
           ),

@@ -33,7 +33,6 @@ const html = '''
   <title>Audio API</title>
   <script type='text/javascript'>$_tone</script>
 </head>
-<body onload="done();" style="background:green">
-</body>
+<body></body>
 </html>
 ''';
