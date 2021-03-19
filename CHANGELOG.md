@@ -1,3 +1,8 @@
+## [0.2.0] - March 19, 2021
+
+* Remove all Web Audio API dependencies
+* Package is fully depend on Tone JS
+
 ## [0.1.7] - March 12, 2021
 
 * Upgrade flutter version

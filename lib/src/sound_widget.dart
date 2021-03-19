@@ -22,7 +22,6 @@ class SoundWidget extends StatelessWidget {
       const Utf8Encoder().convert(html),
     )}';
 
-
     return Visibility(
       visible: true,
       maintainState: true,
