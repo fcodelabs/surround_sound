@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 
 import 'package:webview_flutter/webview_flutter.dart';
@@ -7,6 +8,7 @@ import './sound_controller.dart';
 class SoundControllerImpl implements SoundController {
   final WebViewController _controller;
   final _rand = new Random();
+  Completer<bool>? _cmp;
 
   SoundControllerImpl(this._controller);
 
@@ -25,5 +27,22 @@ class SoundControllerImpl implements SoundController {
       result = await record(vName);
     } while (result != 'null');
     return vName;
+  }
+
+  Future<bool> initialize() {
+    if (_cmp != null) return _cmp!.future;
+    _cmp = Completer<bool>();
+    Future.microtask(() async {
+      String? val;
+      while (true) {
+        val = await record('1+1');
+        if (val == '2') {
+          _cmp!.complete();
+          break;
+        }
+        await Future.delayed(Duration(seconds: 1));
+      }
+    });
+    return _cmp!.future;
   }
 }

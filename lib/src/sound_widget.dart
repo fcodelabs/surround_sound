@@ -32,8 +32,9 @@ class SoundWidget extends StatelessWidget {
           gestureNavigationEnabled: true,
           javascriptMode: JavascriptMode.unrestricted,
           initialUrl: htmlText,
-          onWebViewCreated: (controller) {
+          onWebViewCreated: (controller) async {
             final soundController = SoundControllerImpl(controller);
+            await soundController.initialize();
             onSoundWidgetCreated(soundController);
           },
         ),
