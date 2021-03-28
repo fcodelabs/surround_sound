@@ -1,3 +1,7 @@
+## [0.2.1] - March 28, 2021
+
+* Add initializer to the controller to stop race conditions
+
 ## [0.2.0] - March 19, 2021
 
 * Remove all Web Audio API dependencies
