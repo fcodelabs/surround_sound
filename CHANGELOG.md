@@ -1,3 +1,8 @@
+## [0.2.2] - April 21, 2021
+
+* Improve name finding algorithm
+* Updated WebView version
+
 ## [0.2.1] - March 28, 2021
 
 * Add initializer to the controller to stop race conditions
