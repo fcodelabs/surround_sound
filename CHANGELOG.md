@@ -1,3 +1,8 @@
+## [0.3.0] - April 27, 2021
+
+* Remove Tonejs dependencies from v0.2.x
+* Remove ios bug
+
 ## [0.1.7] - March 12, 2021
 
 * Upgrade flutter version
