@@ -124,7 +124,21 @@ String html(String background) {
 
     function set_freq(f) {
         freq = f;
+        
+        volumeController.disconnect(audioCtx.destination);
+        started = false;
+        oscillator.stop();
+        
+        oscillator = audioCtx.createOscillator();
+        oscillator.type = 'square';
         oscillator.frequency.value = freq;
+        oscillator.start();
+        
+        // Connecting
+        oscillator.connect(panner);
+        panner.connect(volumeController)
+        volumeController.connect(audioCtx.destination);
+        started = true;
     }
 
     function set_volume(v) {
