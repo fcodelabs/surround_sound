@@ -1,3 +1,7 @@
+## [0.3.1] - April 28, 2021
+
+* Expose the previous change in a separate function
+
 ## [0.3.0] - April 27, 2021
 
 * Remove Tonejs dependencies from v0.2.x
