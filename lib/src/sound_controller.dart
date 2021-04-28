@@ -67,6 +67,13 @@ class SoundController extends ValueNotifier<AudioParam> {
         ');');
   }
 
+  Future forceSetFrequency(double freq) async {
+    await _check();
+    freq = freq.clamp(20.0, 20000.0);
+    super.value = super.value.copyWith(freq: freq);
+    await _controller?.evaluateJavascript('force_set_freq($freq);');
+  }
+
   Future setFrequency(double freq) async {
     await _check();
     freq = freq.clamp(20.0, 20000.0);

@@ -124,6 +124,11 @@ String html(String background) {
 
     function set_freq(f) {
         freq = f;
+        oscillator.frequency.value = freq;
+    }
+    
+    function force_set_freq(f) {
+        freq = f;
         
         volumeController.disconnect(audioCtx.destination);
         started = false;
