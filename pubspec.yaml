@@ -1,6 +1,6 @@
 name: surround_sound
 description: A package to create surround sound effects with a frequency generator using Web Audio API
-version: 0.3.1
+version: 0.3.2
 repository: https://github.com/fcodelabs/surround_sound
 issue_tracker: https://github.com/fcodelabs/surround_sound/issues
 homepage: https://www.fcodelabs.com
@@ -11,7 +11,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  webview_flutter: ^2.0.4
+  webview_flutter: ^2.1.1
 
 dev_dependencies:
   flutter_test:

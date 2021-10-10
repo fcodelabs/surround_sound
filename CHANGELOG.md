@@ -1,3 +1,7 @@
+## [0.3.2] - Oct 10, 2021
+
+* Update flutter packages
+
 ## [0.3.1] - April 28, 2021
 
 * Expose the previous change in a separate function
